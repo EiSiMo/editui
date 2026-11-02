@@ -203,15 +203,6 @@ export function ReviewTray(props: ReviewTrayProps) {
           </button>
         ) : null}
         <div className="tray-buttons">
-          {props.canUndoClear ? (
-            <button type="button" className="undo-clear-btn" data-editui="undo-clear" onClick={props.onUndoClear}>
-              Undo clear
-            </button>
-          ) : total > 0 ? (
-            <button type="button" className="danger-btn" data-editui="clear-all" onClick={props.onClearAll}>
-              Clear all
-            </button>
-          ) : null}
           <button
             type="button"
             className="primary wide"
@@ -230,9 +221,20 @@ export function ReviewTray(props: ReviewTrayProps) {
               <span className="btn-check" aria-hidden="true">
                 ✓
               </span>
-            ) : null}
+            ) : (
+              <CopyIcon />
+            )}
             {copyLabel}
           </button>
+          {props.canUndoClear ? (
+            <button type="button" className="undo-clear-btn" data-editui="undo-clear" onClick={props.onUndoClear}>
+              Undo clear
+            </button>
+          ) : total > 0 ? (
+            <button type="button" className="clear-all-btn" data-editui="clear-all" onClick={props.onClearAll}>
+              Clear all
+            </button>
+          ) : null}
         </div>
       </footer>
       <div className="tray-resize" data-editui="tray-resize" onPointerDown={onResizeStart} />
@@ -380,6 +382,15 @@ interface MenuAction {
   danger?: boolean;
   testId?: string;
   onClick: () => void;
+}
+
+function CopyIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+      <rect x="4.5" y="4.5" width="8" height="8" rx="1.4" fill="none" stroke="currentColor" strokeWidth="1.4" />
+      <path d="M9.5 4.5V2.9A1.4 1.4 0 0 0 8.1 1.5H2.9A1.4 1.4 0 0 0 1.5 2.9v5.2A1.4 1.4 0 0 0 2.9 9.5H4.5" fill="none" stroke="currentColor" strokeWidth="1.4" />
+    </svg>
+  );
 }
 
 function initialFrame(): Frame {

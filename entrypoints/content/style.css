@@ -260,52 +260,49 @@
 
 .tray-buttons {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
 }
 
-.tray-buttons > * {
-  flex: 1 1 0;
-  min-width: 0;
+.clear-all-btn,
+.undo-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  align-self: center;
+  border: 0;
+  padding: 2px 6px;
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
 }
 
-.tray-buttons > .danger-btn,
-.tray-buttons > .undo-clear-btn {
+.clear-all-btn {
+  color: #6b7280;
+}
+
+.clear-all-btn:hover {
+  color: #374151;
+}
+
+.primary svg {
+  display: block;
   flex: none;
 }
 
-.danger-btn {
-  border: 0;
-  border-radius: 8px;
-  padding: 7px 12px;
-  background: #dc2626;
-  color: #fff;
-  font: inherit;
-  font-weight: 550;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.danger-btn:hover {
-  background: #b91c1c;
-}
-
 .undo-clear-btn {
-  border: 0;
-  border-radius: 8px;
-  padding: 7px 12px;
-  background: #2563eb;
-  color: #fff;
-  font: inherit;
-  font-weight: 550;
-  white-space: nowrap;
-  cursor: pointer;
+  color: #111827;
 }
 
 .undo-clear-btn:hover {
-  background: #1d4ed8;
+  color: #000;
 }
 
-.danger-btn:focus-visible,
+.clear-all-btn:focus-visible,
 .undo-clear-btn:focus-visible {
   outline: 2px solid #93c5fd;
   outline-offset: 2px;
